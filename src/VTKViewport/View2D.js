@@ -7,6 +7,7 @@ import vtkInteractorStyleMPRSlice from './vtkInteractorStyleMPRSlice';
 import vtkPaintFilter from 'vtk.js/Sources/Filters/General/PaintFilter';
 import vtkPaintWidget from 'vtk.js/Sources/Widgets/Widgets3D/PaintWidget';
 import vtkSVGWidgetManager from './vtkSVGWidgetManager';
+import vtkMatrixBuilder from 'vtk.js/Sources/Common/Core/MatrixBuilder';
 
 import ViewportOverlay from '../ViewportOverlay/ViewportOverlay.js';
 import { ViewTypes } from 'vtk.js/Sources/Widgets/Core/WidgetManager/Constants';
@@ -74,7 +75,7 @@ export default class View2D extends Component {
     const normal = camera.getDirectionOfProjection();
     manip.setNormal(...normal);
     manip.setOrigin(...camera.getFocalPoint());
-    handle.rotateFromDirections(handle.getDirection(), normal);
+    vtkMatrixBuilder.buildfromDegree().rotateFromDirections(handle.getDirection(), normal);
   }
 
   componentDidMount() {
