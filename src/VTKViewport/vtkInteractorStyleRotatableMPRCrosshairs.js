@@ -29,6 +29,9 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
 
   function selectOpperation(callData) {
     const { apis, apiIndex, lineGrabDistance } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
     let { position } = callData;
 
@@ -143,6 +146,8 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
 
     const { apis, apiIndex } = model;
 
+    if (!apis || !apiIndex) return;
+
     apis.forEach((api, index) => {
       if (index !== apiIndex) {
         const { rotatableCrosshairsWidget } = api.svgWidgets;
@@ -216,6 +221,9 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
     }
 
     const { apis, apiIndex } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
 
     const { rotatableCrosshairsWidget } = thisApi.svgWidgets;
@@ -342,6 +350,9 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
 
   function updateCrosshairs(callData) {
     const { apis, apiIndex } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
 
     const { rotatableCrosshairsWidget } = thisApi.svgWidgets;
@@ -353,6 +364,9 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
 
   function snapPosToLine(position, lineIndex) {
     const { apis, apiIndex } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
     const { svgWidgetManager } = thisApi;
     const size = svgWidgetManager.getSize();
@@ -406,6 +420,9 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
 
   function moveCrosshairs(pos, renderer) {
     const { apis, apiIndex } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
 
     const dPos = vtkCoordinate.newInstance();
@@ -437,6 +454,9 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
 
   function scrollCrosshairs(lineIndex, direction) {
     const { apis, apiIndex } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
     const { svgWidgetManager, volumes } = thisApi;
     const volume = volumes[0];
@@ -547,6 +567,9 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
 
   function getDisplayCoordinateScrollIncrement(point) {
     const { apis, apiIndex } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
     const { volumes, genericRenderWindow } = thisApi;
     const renderer = genericRenderWindow.getRenderer();
@@ -578,6 +601,9 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
 
   function handlePassiveMouseMove(callData) {
     const { apis, apiIndex, lineGrabDistance } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
     let { position } = callData;
 
@@ -718,6 +744,9 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
 
     // Unselect lines
     const { apis, apiIndex } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
     const { rotatableCrosshairsWidget } = thisApi.svgWidgets;
 
@@ -742,6 +771,9 @@ function vtkInteractorStyleRotatableMPRCrosshairs(publicAPI, model) {
   const superScrollToSlice = publicAPI.scrollToSlice;
   publicAPI.scrollToSlice = slice => {
     const { apis, apiIndex, lineGrabDistance } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
 
     const { rotatableCrosshairsWidget } = thisApi.svgWidgets;

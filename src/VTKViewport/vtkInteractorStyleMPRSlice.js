@@ -242,6 +242,8 @@ function vtkInteractorStyleMPRSlice(publicAPI, model) {
   function handleButtonPress(callData) {
     const { apis, apiIndex } = model;
 
+    if (!apis || !apiIndex) return;
+
     if (apis && apis[apiIndex] && apis[apiIndex].type === 'VIEW2D') {
       publicAPI.startPan();
 
@@ -258,6 +260,9 @@ function vtkInteractorStyleMPRSlice(publicAPI, model) {
 
   function updateRotatableCrosshairs() {
     const { apis, apiIndex } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
     const { rotatableCrosshairsWidget } = thisApi.svgWidgets;
     const worldPos = thisApi.get('cachedCrosshairWorldPosition');
@@ -282,6 +287,9 @@ function vtkInteractorStyleMPRSlice(publicAPI, model) {
     }
 
     const { apis, apiIndex } = model;
+
+    if (!apis || !apiIndex) return;
+
     const thisApi = apis[apiIndex];
 
     // This stops the clipping range being randomly reset.
@@ -308,6 +316,9 @@ function vtkInteractorStyleMPRSlice(publicAPI, model) {
     if (model.state === States.IS_PAN) {
       publicAPI.endPan();
       const { apis, apiIndex } = model;
+
+      if (!apis || !apiIndex) return;
+
       const api = apis[apiIndex];
 
       if (api.svgWidgets.crosshairsWidget) {
@@ -394,6 +405,8 @@ function vtkInteractorStyleMPRSlice(publicAPI, model) {
 
   model.onScroll = () => {
     const { apis, apiIndex } = model;
+
+    if (!apis || !apiIndex) return;
 
     // TODO -> We need to think of a more generic way to do this for all widget types eventually.
     // TODO -> We certainly need to be able to register stuff like this.
