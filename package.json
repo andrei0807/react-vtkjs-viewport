@@ -18,7 +18,7 @@
     "dev": "webpack-dev-server --config ./.webpack/webpack.dev.js --watch",
     "lint": "eslint src/** --fix",
     "start": "yarn run dev",
-    "prepare": "yarn run build:release",
+    "prepare": "yarn run build",
     "predeploy": "yarn install && yarn run build:release",
     "prepublishOnly": "yarn run build && yarn run build:release"
   },
