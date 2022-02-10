@@ -24,8 +24,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
-const vtkRules = require('vtk.js/Utilities/config/dependency.js').webpack.core
-  .rules;
 // Plugins
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -75,7 +73,7 @@ module.exports = {
           },
         ],
       },
-    ].concat(vtkRules),
+    ],
     //.concat(shaderLoader),
   },
   resolve: {

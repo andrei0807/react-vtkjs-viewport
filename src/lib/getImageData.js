@@ -1,6 +1,6 @@
 import { vec3 } from 'gl-matrix';
-import vtkImageData from 'vtk.js/Sources/Common/DataModel/ImageData';
-import vtkDataArray from 'vtk.js/Sources/Common/Core/DataArray';
+import vtkImageData from '@kitware/vtk.js/Common/DataModel/ImageData';
+import vtkDataArray from '@kitware/vtk.js/Common/Core/DataArray';
 
 import buildMetadata from './data/buildMetadata.js';
 import imageDataCache from './data/imageDataCache.js';

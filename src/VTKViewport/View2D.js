@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cornerstoneTools from 'cornerstone-tools';
-import vtkGenericRenderWindow from 'vtk.js/Sources/Rendering/Misc/GenericRenderWindow';
-import vtkRenderer from 'vtk.js/Sources/Rendering/Core/Renderer';
-import vtkWidgetManager from 'vtk.js/Sources/Widgets/Core/WidgetManager';
+import vtkGenericRenderWindow from '@kitware/vtk.js/Rendering/Misc/GenericRenderWindow';
+import vtkRenderer from '@kitware/vtk.js/Rendering/Core/Renderer';
+import vtkWidgetManager from '@kitware/vtk.js/Widgets/Core/WidgetManager';
 import vtkInteractorStyleMPRSlice from './vtkInteractorStyleMPRSlice';
-import vtkPaintFilter from 'vtk.js/Sources/Filters/General/PaintFilter';
-import vtkPaintWidget from 'vtk.js/Sources/Widgets/Widgets3D/PaintWidget';
+import vtkPaintFilter from '@kitware/vtk.js/Filters/General/PaintFilter';
+import vtkPaintWidget from '@kitware/vtk.js/Widgets/Widgets3D/PaintWidget';
 import vtkSVGWidgetManager from './vtkSVGWidgetManager';
-import vtkMatrixBuilder from 'vtk.js/Sources/Common/Core/MatrixBuilder';
+import vtkMatrixBuilder from '@kitware/vtk.js/Common/Core/MatrixBuilder';
 
 import ViewportOverlay from '../ViewportOverlay/ViewportOverlay.js';
-import { ViewTypes } from 'vtk.js/Sources/Widgets/Core/WidgetManager/Constants';
+import { ViewTypes } from '@kitware/vtk.js/Widgets/Core/WidgetManager/Constants';
 import { createSub } from '../lib/createSub.js';
 import realsApproximatelyEqual from '../lib/math/realsApproximatelyEqual';
 import createLabelPipeline from './createLabelPipeline';
