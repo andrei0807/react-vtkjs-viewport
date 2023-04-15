@@ -110,24 +110,26 @@ export default function loadImageDataProgressively(imageDataObject) {
   prefetchImageIds(imageIds, insertPixelData, insertPixelDataErrorHandler);
 }
 
-const requestType = 'prefetch';
-const preventCache = false;
-
 function prefetchImageIds(
   imageIds,
   insertPixelData,
   insertPixelDataErrorHandler
 ) {
+  const imageLoadPoolManager = cornerstone.imageLoadPoolManager;
+  const requestType = 'prefetch';
+
+  const requestFn = id =>
+    cornerstone
+      .loadAndCacheImage(id)
+      .then(insertPixelData, insertPixelDataErrorHandler);
+
   imageIds.forEach(imageId => {
-    requestPoolManager.addRequest(
-      {},
-      imageId,
+    imageLoadPoolManager.addRequest(
+      requestFn.bind(this, imageId),
       requestType,
-      preventCache,
-      insertPixelData,
-      insertPixelDataErrorHandler
+      {
+        imageId,
+      }
     );
   });
-
-  requestPoolManager.startGrabbing();
 }
