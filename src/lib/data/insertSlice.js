@@ -29,20 +29,29 @@ export default function insertSlice(
   let max = scalingFunction(pixels[pixelIndex]);
   let min = max;
 
+  // for (let pixelIndex = 0; pixelIndex < pixels.length; pixelIndex++) {
+  //   const destIdx = pixelIndex + sliceIndex * sliceLength;
+  //   const pixel = pixels[pixelIndex];
+  //   const pixelValue = scalingFunction(pixel);
+  //
+  //   if (pixelValue > max) {
+  //     max = pixelValue;
+  //   } else if (pixelValue < min) {
+  //     min = pixelValue;
+  //   }
+  //
+  //   scalarData[destIdx] = pixelValue;
+  // }
+
+  // remove alpha channel from rgba
+  let destIdx = sliceIndex * (sliceLength / 4) * 3;
   for (let pixelIndex = 0; pixelIndex < pixels.length; pixelIndex++) {
-    const destIdx = pixelIndex + sliceIndex * sliceLength;
-    const pixel = pixels[pixelIndex];
-    const pixelValue = scalingFunction(pixel);
-
-    if (pixelValue > max) {
-      max = pixelValue;
-    } else if (pixelValue < min) {
-      min = pixelValue;
-    }
-
-    scalarData[destIdx] = pixelValue;
+    scalarData[destIdx] = pixels[pixelIndex]; // red
+    scalarData[destIdx + 1] = pixels[pixelIndex + 1]; // green
+    scalarData[destIdx + 2] = pixels[pixelIndex + 2]; // blue
+    destIdx += 3;
+    pixelIndex += 3;
   }
-
   return { min, max };
 }
 

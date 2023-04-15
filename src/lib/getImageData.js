@@ -54,13 +54,15 @@ export default function getImageData(imageIds, displaySetInstanceUid) {
 
     case 16:
       pixelArray = new Float32Array(xVoxels * yVoxels * zVoxels);
-
+      break;
+    case 24:
+      pixelArray = new Uint8Array(xVoxels * yVoxels * zVoxels * 3);
       break;
   }
 
   const scalarArray = vtkDataArray.newInstance({
     name: 'Pixels',
-    numberOfComponents: 1,
+    numberOfComponents: 3,
     values: pixelArray,
   });
 

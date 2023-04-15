@@ -37,7 +37,7 @@ export default function buildMetadata(imageIds) {
   const metaDataMap = new Map();
   imageIds.forEach(imageId => {
     // TODO: Retrieve this from somewhere other than Cornerstone
-    const metaData = cornerstone.metaData.get('imagePlaneModule', imageId);
+    const metaData = cornerstone.metaData.get('imagePlaneModule', imageId + '_stack');
 
     metaDataMap.set(imageId, metaData);
   });
