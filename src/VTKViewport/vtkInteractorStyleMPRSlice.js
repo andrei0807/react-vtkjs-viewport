@@ -242,7 +242,7 @@ function vtkInteractorStyleMPRSlice(publicAPI, model) {
   function handleButtonPress(callData) {
     const { apis, apiIndex } = model;
 
-    if (!apis || !apiIndex) return;
+    if (!apis || apiIndex === undefined) return;
 
     if (apis && apis[apiIndex] && apis[apiIndex].type === 'VIEW2D') {
       publicAPI.startPan();
@@ -261,7 +261,7 @@ function vtkInteractorStyleMPRSlice(publicAPI, model) {
   function updateRotatableCrosshairs() {
     const { apis, apiIndex } = model;
 
-    if (!apis || !apiIndex) return;
+    if (!apis || apiIndex === undefined) return;
 
     const thisApi = apis[apiIndex];
     const { rotatableCrosshairsWidget } = thisApi.svgWidgets;
@@ -288,7 +288,7 @@ function vtkInteractorStyleMPRSlice(publicAPI, model) {
 
     const { apis, apiIndex } = model;
 
-    if (!apis || !apiIndex) return;
+    if (!apis || apiIndex === undefined) return;
 
     const thisApi = apis[apiIndex];
 
@@ -317,7 +317,7 @@ function vtkInteractorStyleMPRSlice(publicAPI, model) {
       publicAPI.endPan();
       const { apis, apiIndex } = model;
 
-      if (!apis || !apiIndex) return;
+      if (!apis || apiIndex === undefined) return;
 
       const api = apis[apiIndex];
 
@@ -406,7 +406,7 @@ function vtkInteractorStyleMPRSlice(publicAPI, model) {
   model.onScroll = () => {
     const { apis, apiIndex } = model;
 
-    if (!apis || !apiIndex) return;
+    if (!apis || apiIndex === undefined) return;
 
     // TODO -> We need to think of a more generic way to do this for all widget types eventually.
     // TODO -> We certainly need to be able to register stuff like this.

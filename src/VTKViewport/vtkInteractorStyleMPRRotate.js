@@ -52,7 +52,7 @@ function vtkInteractorStyleMPRRotate(publicAPI, model) {
 
     const { apis, apiIndex } = model;
 
-    if (!apis || !apiIndex) return;
+    if (!apis || apiIndex === undefined) return;
 
     const api = apis[apiIndex];
 

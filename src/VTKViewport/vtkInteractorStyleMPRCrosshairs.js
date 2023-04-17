@@ -20,7 +20,7 @@ function vtkInteractorStyleMPRCrosshairs(publicAPI, model) {
   function moveCrosshairs(callData) {
     const { apis, apiIndex } = model;
 
-    if (!apis || !apiIndex) return;
+    if (!apis || apiIndex === undefined) return;
 
     const api = apis[apiIndex];
 
