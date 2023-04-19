@@ -40,6 +40,7 @@ export default class View2D extends Component {
     orientation: PropTypes.object,
     labelmapRenderingOptions: PropTypes.object,
     showRotation: PropTypes.bool,
+    showOverlay: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -48,9 +49,10 @@ export default class View2D extends Component {
       visible: true,
       renderOutline: true,
       segmentsDefaultProperties: [],
-      onNewSegmentationRequested: () => {},
+      onNewSegmentationRequested: () => { },
     },
     showRotation: false,
+    showOverlay: false,
   };
 
   constructor(props) {
@@ -598,7 +600,7 @@ export default class View2D extends Component {
 
     if (
       prevProps.paintFilterLabelMapImageData !==
-        this.props.paintFilterLabelMapImageData &&
+      this.props.paintFilterLabelMapImageData &&
       this.props.paintFilterLabelMapImageData
     ) {
       this.subs.labelmap.unsubscribe();
@@ -665,7 +667,7 @@ export default class View2D extends Component {
     if (
       prevProps.labelmapRenderingOptions &&
       prevProps.labelmapRenderingOptions.visible !==
-        this.props.labelmapRenderingOptions.visible
+      this.props.labelmapRenderingOptions.visible
     ) {
       this.labelmap.actor.setVisibility(
         prevProps.labelmapRenderingOptions.visible
@@ -771,11 +773,14 @@ export default class View2D extends Component {
     return (
       <div style={style}>
         <div ref={this.container} style={style} />
-        <ViewportOverlay
-          {...this.props.dataDetails}
-          voi={voi}
-          rotation={rotation}
-        />
+        {
+          this.props.showOverlay &&
+          <ViewportOverlay
+            {...this.props.dataDetails}
+            voi={voi}
+            rotation={rotation}
+          />
+        }
       </div>
     );
   }
