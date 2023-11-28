@@ -67,7 +67,6 @@ export default function loadImageDataProgressively(imageDataObject) {
 
   const insertPixelData = image => {
     const { imagePositionPatient } = metaDataMap.get(image.imageId);
-
     const sliceIndex = sortedDatasets.findIndex(
       dataset => dataset.imagePositionPatient === imagePositionPatient
     );

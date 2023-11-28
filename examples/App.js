@@ -10,6 +10,7 @@ import VTKCrosshairsExample from './VTKCrosshairsExample.js';
 import VTKRotatableCrosshairsExample from './VTKRotatableCrosshairsExample.js';
 import VTKMPRRotateExample from './VTKMPRRotateExample.js';
 import VTKVolumeRenderingExample from './VTKVolumeRenderingExample.js';
+import DevTest from './DevTest.js';
 
 function LinkOut({ href, text }) {
   return (
@@ -89,6 +90,12 @@ function Index() {
       text:
         'Generating vtkjs imagedata from cornerstone images and displaying them in a VTK viewport.',
     },
+    {
+      title: 'Dev Test Page',
+      url: '/dev-test',
+      text:
+        'Development Test Page',
+    },
   ];
 
   const exampleComponents = examples.map(e => {
@@ -154,7 +161,7 @@ function AppRouter() {
   const rotateMPR = () => Example({ children: <VTKMPRRotateExample /> });
   const volumeRendering = () =>
     Example({ children: <VTKVolumeRenderingExample /> });
-
+  const devTest = () => Example({ children: <DevTest /> });
   return (
     <Router>
       <Switch>
@@ -172,6 +179,7 @@ function AppRouter() {
         <Route exact path="/rotate" render={rotateMPR} />
         <Route exact path="/volume-rendering" render={volumeRendering} />
         <Route exact path="/cornerstone-load-image-data" render={loadImage} />
+        <Route exact path="/dev-test" render={devTest} />
         <Route exact component={Index} />
       </Switch>
     </Router>

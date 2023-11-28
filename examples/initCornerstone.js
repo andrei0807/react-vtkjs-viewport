@@ -4,6 +4,7 @@ import cornerstoneMath from 'cornerstone-math';
 import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 import cornerstoneTools from 'cornerstone-tools';
 import Hammer from 'hammerjs';
+import cornerstoneWebImageLoader from './CornerstoneWebImageLoader';
 
 cornerstoneTools.external.cornerstone = cornerstone;
 cornerstoneTools.external.Hammer = Hammer;
@@ -45,3 +46,6 @@ var config = {
   },
 };
 cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
+
+
+cornerstoneWebImageLoader.external.cornerstone = cornerstone;
