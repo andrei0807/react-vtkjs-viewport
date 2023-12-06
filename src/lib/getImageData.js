@@ -53,7 +53,7 @@ export default function getImageData(imageIds, displaySetInstanceUid) {
       }
 
     case 16:
-      pixelArray = signed ? new Int16Array(xVoxels * yVoxels * zVoxels) : new Uint16Array(xVoxels * yVoxels * zVoxels);
+      pixelArray = new Int16Array(xVoxels * yVoxels * zVoxels);
       break;
     case 24:
       pixelArray = new Uint8Array(xVoxels * yVoxels * zVoxels * 3);

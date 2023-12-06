@@ -5,6 +5,7 @@ import {
   loadImageData,
   vtkInteractorStyleMPRCrosshairs,
   vtkSVGCrosshairsWidget,
+  vtkInteractorStyleMPRWindowLevel,
 } from '../src';
 import vtkVolume from '@kitware/vtk.js/Rendering/Core/Volume';
 import vtkVolumeMapper from '@kitware/vtk.js/Rendering/Core/VolumeMapper';
@@ -28,10 +29,11 @@ class VTKCrosshairsExample extends Component {
     this.apis = [];
 
     // 8bit png
-    let ctImageIds = ['https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/0', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/1', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/2', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/3', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/4', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/5', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/6', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/7', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/8', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/9', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/10', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/11', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/12', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/13', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/14', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/15', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/16', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/17', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/18', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/19', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/20', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/21', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/22', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/23', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/24', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/25', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/26', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/27', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/28', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/29', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/30', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/31', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/32', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/33', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/34'];
+    // let ctImageIds = ['https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/0', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/1', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/2', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/3', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/4', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/5', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/6', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/7', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/8', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/9', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/10', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/11', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/12', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/13', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/14', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/15', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/16', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/17', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/18', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/19', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/20', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/21', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/22', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/23', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/24', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/25', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/26', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/27', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/28', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/29', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/30', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/31', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/32', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/33', 'https://localhost-static.detectedx.com/images/398b0a6d-9aec-44c4-b3d6-2c430811993c/34'];
 
     // 16bit greyscale png
     // let ctImageIds = ['https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/0', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/1', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/2', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/3', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/4', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/5', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/6', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/7', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/8', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/9', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/10', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/11', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/12', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/13', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/14', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/15', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/16', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/17', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/18', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/19', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/20', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/21', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/22', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/23', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/24', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/25', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/26', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/27', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/28', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/29', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/30', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/31', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/32', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/33', 'https://localhost-static.detectedx.com/images/d3c33b3f-03b2-4db6-901d-881b1ae087d4/34']
+    let ctImageIds = ['https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/0', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/1', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/2', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/3', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/4', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/5', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/6', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/7', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/8', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/9', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/10', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/11', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/12', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/13', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/14', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/15', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/16', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/17', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/18', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/19', 'https://localhost-static.detectedx.com/images/46373b4c-f717-42c5-99a6-2049ea52a9c6/20']
 
     const that = this;
     Promise.all(ctImageIds.map((v) => cornerstoneWebImageLoader.dataSetCacheManager.loadMetaData(v))).then(() => {
@@ -136,6 +138,41 @@ class VTKCrosshairsExample extends Component {
     this.setState({ displayCrosshairs: shouldDisplayCrosshairs });
   };
 
+  saveRenderWindow = viewportIndex => {
+    return api => {
+      this.apis[viewportIndex] = api;
+
+      const apis = this.apis;
+
+      if (viewportIndex === 1) {
+        const istyle = vtkInteractorStyleMPRWindowLevel.newInstance();
+
+        const callbacks = {
+          setOnLevelsChanged: voi => {
+            const { windowWidth, windowCenter } = voi;
+            const levels = this.state.levels || {};
+
+            apis.forEach(api => {
+              const renderWindow = api.genericRenderWindow.getRenderWindow();
+
+              api.updateVOI(windowWidth, windowCenter);
+              renderWindow.render();
+            });
+            console.log(windowCenter, windowWidth);
+            levels.windowCenter = windowCenter;
+            levels.windowWidth = windowWidth;
+
+            this.setState({
+              levels,
+            });
+          },
+        };
+
+        api.setInteractorStyle({ istyle, callbacks });
+      }
+    };
+  };
+
   render() {
     if (!this.state.volumes || !this.state.volumes.length) {
       return <h4>Loading...</h4>;
@@ -171,21 +208,21 @@ class VTKCrosshairsExample extends Component {
           <div className="col-sm-4">
             <View2D
               volumes={this.state.volumes}
-              onCreated={this.storeApi(0)}
+              onCreated={this.saveRenderWindow(0)}
               orientation={{ sliceNormal: [0, 1, 0], viewUp: [0, 0, 1] }}
             />
           </div>
           <div className="col-sm-4">
             <View2D
               volumes={this.state.volumes}
-              onCreated={this.storeApi(1)}
+              onCreated={this.saveRenderWindow(2)}
               orientation={{ sliceNormal: [1, 0, 0], viewUp: [0, 0, 1] }}
             />
           </div>
           <div className="col-sm-4">
             <View2D
               volumes={this.state.volumes}
-              onCreated={this.storeApi(2)}
+              onCreated={this.saveRenderWindow(1)}
               orientation={{ sliceNormal: [0, 0, 1], viewUp: [0, -1, 0] }}
             />
           </div>
